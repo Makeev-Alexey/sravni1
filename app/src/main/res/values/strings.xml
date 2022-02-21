@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">sravni</string>
+    <string name="string1">Устанавливает страховая\nкомпания</string>
+    <string name="string2">Чем мощнее автомобиль,\nтем дороже страховой полис</string>
+    <string name="string3">Определяется по прописке\nсобственника автомобиля</string>
+    <string name="string4">Учитывается только самый\nвысокий коэффициент из всех\nводителей</string>
+    <string name="string5">Чем больше возраст и стаж\nу вписанного в полис водителя,\nтем дешевле будет полис</string>
+    <string name="string6">Полис с ограниченным списком\nводителей будет стоить дешевле</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main_string"><h1>Калькулятор ОСАГО</h1></string>
+    <string name="hint1open"><font color="#636F7D">Город регистрации\nсобственника</font></string>
+    <string name="welcome_messages">&lt;font color="#00AFFF">%1$s&lt;/font>&lt;font color="#99A1AB">х&lt;/font>&lt;font color="#00AFFF">%2$s&lt;/font>&lt;font color="#99A1AB">х&lt;/font>&lt;font color="#00AFFF">%3$s&lt;/font>&lt;font color="#99A1AB">х&lt;/font>&lt;font color="#00AFFF">%4$s&lt;/font>&lt;font color="#99A1AB">х&lt;/font>&lt;font color="#00AFFF">%5$s&lt;/font>&lt;font color="#99A1AB">х&lt;/font>&lt;font color="#00AFFF">%6$s&lt;/font></string>
+</resources>
