@@ -12,7 +12,20 @@ import android.view.animation.AnimationUtils
 import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import com.example.sravni.databinding.FragmentBlankBinding
+import com.example.sravni.ui.main.FactorAPI
+import com.example.sravni.ui.main.Factors
+import com.example.sravni.ui.main.RetrofitHelper
 import com.example.sravni.ui.main.Showbottom
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
 
 class BlankFragment : Fragment() {
     private var _binding : FragmentBlankBinding? = null
@@ -20,6 +33,7 @@ class BlankFragment : Fragment() {
     private lateinit var showbottom: Showbottom
     private var linearVisible = "linearlayoutvisible"
     private var imageID = "imageID"
+    var api = RetrofitHelper.getInstance().create(FactorAPI::class.java)
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
@@ -31,6 +45,7 @@ class BlankFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
+
         }
     }
 
@@ -47,6 +62,30 @@ class BlankFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.textView17.text = Html.fromHtml(getString(R.string.welcome_messages,
             "БТ","КМ","КТ","КБМ","КО","КВС"), FROM_HTML_MODE_LEGACY)
+//        api.everything().enqueue(object : Callback<Factors>{
+//            override fun onResponse(call: Call<Factors>, response: Response<Factors>) {
+////                println(response.body())
+//            }
+//
+//            override fun onFailure(call: Call<Factors>, t: Throwable) {
+//                println(t.message)
+//            }
+//
+//        })
+//        api.everythingRX()
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .doOnNext {x->println(Thread.currentThread().name)}
+//            .subscribeOn(Schedulers.io())
+//            .subscribe({response -> println(Thread.currentThread().name)}, {t -> println(t) })
+//        GlobalScope.launch {
+//            var list: Factors = api.everythingCourutines()
+//            println(list.factors)
+//        }
+        GlobalScope.launch {
+        flow<Factors> {
+            emit(api.everythingCourutines())
+        }.collect { println(it.factors) }
+        }
         binding.constr.setOnClickListener {
             hideshow()
         }

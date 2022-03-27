@@ -42,7 +42,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:visibility="visible"
-                app:cardCornerRadius="20dp">
+                app:cardCornerRadius="20dp"
+                tools:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
